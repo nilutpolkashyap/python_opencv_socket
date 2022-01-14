@@ -1,1 +1,1 @@
-# rpi_socket_video_streamer
+# python_opencv_socket
