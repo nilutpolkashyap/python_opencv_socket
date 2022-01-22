@@ -1,7 +1,7 @@
 import socket, cv2, pickle, struct
 import imutils
 import threading
-import pyshine as ps # pip install pyshine
+import pyshine as ps 
 import cv2
 
 server_socket = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
@@ -17,12 +17,12 @@ print("Listening at",socket_address)
 def show_client(addr,client_socket):
 	try:
 		print('CLIENT {} CONNECTED!'.format(addr))
-		if client_socket: # if a client socket exists
+		if client_socket:
 			data = b""
 			payload_size = struct.calcsize("Q")
 			while True:
 				while len(data) < payload_size:
-					packet = client_socket.recv(4*1024) # 4K
+					packet = client_socket.recv(4*1024) 
 					if not packet: break
 					data+=packet
 				packed_msg_size = data[:payload_size]
@@ -35,7 +35,7 @@ def show_client(addr,client_socket):
 				data  = data[msg_size:]
 				frame = pickle.loads(frame_data)
 				text  =  f"CLIENT: {addr}"
-				frame =  ps.putBText(frame,text,10,10,vspace=10,hspace=1,font_scale=0.7, 						background_RGB=(255,0,0),text_RGB=(255,250,250))
+				frame =  ps.putBText(frame,text,10,10,vspace=10,hspace=1,font_scale=0.7,background_RGB=(255,0,0),text_RGB=(255,250,250))
 				cv2.imshow(f"FROM {addr}",frame)
 				key = cv2.waitKey(1) & 0xFF
 				if key  == ord('q'):
