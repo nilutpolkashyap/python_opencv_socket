@@ -1,14 +1,13 @@
 import socket,cv2, pickle,struct
-import pyshine as ps # pip install pyshine
-import imutils # pip install imutils
+import pyshine as ps 
+import imutils 
 camera = True
 if camera == True:
 	vid = cv2.VideoCapture(0)
 else:
 	vid = cv2.VideoCapture('videos/mario.mp4')
 client_socket = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
-host_ip = '192.168.1.11' # Here according to your server ip write the address
-
+host_ip = '192.168.1.11' 
 port = 9999
 client_socket.connect((host_ip,port))
 
